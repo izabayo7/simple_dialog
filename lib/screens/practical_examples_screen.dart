@@ -149,13 +149,16 @@ class _PracticalExamplesScreenState extends State<PracticalExamplesScreen> {
             borderRadius: BorderRadius.circular(15),
           ),
           children: [
-            GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 3,
+            Container(
+              width: double.maxFinite,
               padding: const EdgeInsets.all(20),
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20,
-              children: shareOptions.map((option) {
+              child: GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 3,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                children: shareOptions.map((option) {
                 return InkWell(
                   onTap: () {
                     Navigator.pop(context, option['title'] as String);
@@ -184,6 +187,7 @@ class _PracticalExamplesScreenState extends State<PracticalExamplesScreen> {
                   ),
                 );
               }).toList(),
+              ),
             ),
           ],
         );
